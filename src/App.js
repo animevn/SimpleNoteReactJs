@@ -2,12 +2,12 @@ import React from "react";
 import Header from "./frame/Header"
 import Footer from "./frame/Footer";
 import {Route, BrowserRouter} from "react-router-dom";
-import Home from "./auth/Home";
 import {AuthProvider} from "./firebase/Auth";
 import PrivateRoute from "./route/PrivateRoute";
-import Profile from "./auth/Profile";
+import Home from "./Home";
 import SignIn from "./auth/SignIn";
 import Register from "./auth/Register";
+import Login from "./auth/Login";
 
 function App() {
   return (
@@ -18,10 +18,10 @@ function App() {
 
         <AuthProvider>
           <BrowserRouter>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/login" component={Login}/>
             <Route exact path="/signin" component={SignIn}/>
             <Route exact path="/register" component={Register}/>
-            <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute exact path="/" component={Home} />
           </BrowserRouter>
         </AuthProvider>
 

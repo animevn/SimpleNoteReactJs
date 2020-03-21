@@ -1,11 +1,12 @@
 import React, {useContext} from "react";
-import {withRouter, Redirect} from "react-router-dom";
+import {withRouter, Redirect, useHistory} from "react-router-dom";
 import firebase from "../firebase/Firebase";
 import {AuthContext} from "../firebase/Auth";
 
-const Home = ({history})=>{
+const Login = ()=>{
   const {currentUser} = useContext(AuthContext);
-  if (currentUser) return <Redirect to="/profile"/>;
+  const history = useHistory();
+  if (currentUser) return <Redirect to="/"/>;
 
   function onGoogleClick() {
     let provider = new firebase.auth.GoogleAuthProvider();
@@ -49,4 +50,4 @@ const Home = ({history})=>{
   );
 };
 
-export default withRouter(Home);
+export default withRouter(Login);

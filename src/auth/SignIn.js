@@ -5,7 +5,7 @@ import {AuthContext} from "../firebase/Auth";
 
 const SignIn = ()=>{
   const {currentUser}= useContext(AuthContext);
-  if (currentUser) return <Redirect to="/profile"/>;
+  if (currentUser) return <Redirect to="/"/>;
 
   const handleSignIn = (event)=>{
     event.preventDefault();

@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
-import {AuthContext} from "../firebase/Auth";
+import {AuthContext} from "./firebase/Auth";
 import {Redirect} from "react-router-dom";
-import firebase from "../firebase/Firebase";
+import firebase from "./firebase/Firebase";
 
-const Profile = ()=>{
+const Home = ()=>{
   const {currentUser} = useContext(AuthContext);
   if (!currentUser){
-    return <Redirect to="/"/>;
+    return <Redirect to="/login"/>;
   }
   return (
     <div className="container">
@@ -30,4 +30,4 @@ const Profile = ()=>{
   );
 };
 
-export default Profile;
+export default Home;
