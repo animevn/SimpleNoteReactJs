@@ -20,7 +20,7 @@ function UserIcon() {
 
   if (currentUser){
     return (
-      <div className="dropdown ml-auto">
+      <div className="dropdown ml-auto text-white">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a className="navbar-brand brand-image dropdown-toggle" id="dropdownMenuLink"
            data-toggle="dropdown">
@@ -29,17 +29,24 @@ function UserIcon() {
         </a>
         <div className="dropdown-menu dropdown-menu-right bg-success">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="dropdown-item">{currentUser.email}</a>
-          <button className="dropdown-item" onClick={onDeleteUser}>Delete Account</button>
+          <a className="dropdown-item text-white">{currentUser.email}</a>
+          <button className="dropdown-item text-white"
+                  onClick={onDeleteUser}>
+            Delete Account
+          </button>
           <div className="dropdown-divider"></div>
+
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="dropdown-item" href="#">Profile</a>
+          <a className="dropdown-item text-white" href="#">Profile</a>
+
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="dropdown-item" href="#">Your posts</a>
+          <a className="dropdown-item text-white" href="#">Your posts</a>
+
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className="dropdown-item" href="#">Recycle Bin</a>
+          <a className="dropdown-item text-white" href="#">Recycle Bin</a>
           <div className="dropdown-divider"></div>
-          <button className="dropdown-item" onClick={onLogoutClick}>Logout</button>
+
+          <button className="dropdown-item text-white" onClick={onLogoutClick}>Logout</button>
         </div>
       </div>
     )
