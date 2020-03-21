@@ -1,9 +1,11 @@
 import React, {useContext} from "react";
 import firebase from "./firebase/Firebase";
 import {ShareNoteContext} from "./utils/ShareNote";
+import {AuthContext} from "./firebase/Auth";
 
 function Input() {
-  const ref = firebase.firestore().collection("notes");
+  const {currentUser} = useContext(AuthContext);
+  const ref = firebase.firestore().collection("notes").doc(currentUser.uid).collection("note");
   const initialNote = {title:"", content:"", id:"", isOpen:false};
   const {note, setNote} = useContext(ShareNoteContext);
 
