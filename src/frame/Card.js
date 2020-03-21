@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {ShareNoteContext} from "../context/ShareNote";
+import {ShareNoteContext} from "../utils/ShareNote";
 import firebase from "firebase";
 
 function Card(props) {

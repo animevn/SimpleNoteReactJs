@@ -1,6 +1,9 @@
 import React, {useContext} from "react";
 import {AuthContext} from "./firebase/Auth";
 import {Redirect} from "react-router-dom";
+import {FirestoreProvider} from "./firebase/Firestore";
+import {ShareNoteProvider} from "./utils/ShareNote";
+import Input from "./Input";
 
 const Home = ()=>{
   const {currentUser} = useContext(AuthContext);
@@ -11,10 +14,11 @@ const Home = ()=>{
 
   return (
     <div className="container">
-      <h1 className="text-center mt-5 mb-5 text-success">My Profile</h1>
-      <h5 className="text-center mt-5 mb-5 text-success">
-        {currentUser.uid}
-      </h5>
+      <FirestoreProvider>
+        <ShareNoteProvider>
+          <Input/>
+        </ShareNoteProvider>
+      </FirestoreProvider>
     </div>
   );
 };
