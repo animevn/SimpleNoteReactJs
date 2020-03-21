@@ -19,7 +19,7 @@ function Card(props) {
   return (
     <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 p-2">
       <div className="card shadow-sm flex-column h-100">
-        <div className="card-header bg-warning">{title}</div>
+        <div className="card-header bg-success text-white">{title}</div>
         <div className="card-body d-flex flex-column justify-content-between pb-0 pr-0">
           <p className="mr-2">{content}</p>
 

@@ -4,6 +4,7 @@ import {Redirect} from "react-router-dom";
 import {FirestoreProvider} from "./firebase/Firestore";
 import {ShareNoteProvider} from "./utils/ShareNote";
 import Input from "./Input";
+import Note from "./Note";
 
 const Home = ()=>{
   const {currentUser} = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Home = ()=>{
       <FirestoreProvider>
         <ShareNoteProvider>
           <Input/>
+          <Note/>
         </ShareNoteProvider>
       </FirestoreProvider>
     </div>
