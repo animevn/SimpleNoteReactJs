@@ -102,3 +102,8 @@ body{
 .dropdown .dropdown-menu .dropdown-item:hover{
     background-color: lightpink;
 }
+
+.button-add{
+    margin-top: 0;
+    transform: translateY(-50%);
+}

@@ -59,8 +59,8 @@ function Input() {
         </textarea>
       </div>
 
-      <div className="container d-flex">
-        <button className="btn btn btn-success rounded-circle button-add ml-auto shadow"
+      <div className="container text-right">
+        <button className="btn button-add btn-success rounded-circle d-inline shadow"
                 type="button" onClick={handleClick}>
           +
         </button>
