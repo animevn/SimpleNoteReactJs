@@ -1,5 +1,6 @@
 import React from "react";
 import {withRouter, useHistory} from "react-router-dom";
+import UserIcon from "./UserIcon";
 
 function Footer() {
   const history = useHistory();
@@ -10,10 +11,11 @@ function Footer() {
 
   return (
     <div className="container-fluid bg-success shadow">
-      <div className="container py-4">
+      <div className="row container mx-auto py-4">
         <button className="heading-title btn text-white" onClick={onTitleClick}>
           Simple Notes
         </button>
+        <UserIcon/>
       </div>
     </div>
   );
