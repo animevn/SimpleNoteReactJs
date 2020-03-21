@@ -1,13 +1,22 @@
 import React from "react";
+import {withRouter, useHistory} from "react-router-dom";
 
 function Footer() {
+  const history = useHistory();
+  const onTitleClick = (event)=>{
+    event.preventDefault();
+    history.push("/");
+  };
+
   return (
     <div className="container-fluid bg-success shadow">
       <div className="container py-4">
-        <h1 className="heading-title text-white">Firebase Auth</h1>
+        <button className="heading-title btn text-white" onClick={onTitleClick}>
+          Simple Notes
+        </button>
       </div>
     </div>
   );
 }
 
-export default Footer;
+export default withRouter(Footer);

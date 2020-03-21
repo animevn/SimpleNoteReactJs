@@ -13,11 +13,11 @@ function App() {
   return (
     <div className="main">
       <div className="container-fluid px-0">
-        <Header/>
         {/*app goes in here*/}
 
         <AuthProvider>
           <BrowserRouter>
+            <Header/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/signin" component={SignIn}/>
             <Route exact path="/register" component={Register}/>
