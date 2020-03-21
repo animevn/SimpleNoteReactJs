@@ -45,7 +45,7 @@ function Input() {
 
   return (
     <div className="container col-xl-5 col-lg-6 col-md-8 col-sm-10 col-11 mx-auto pt-1">
-      <div className="form-group bg-warning p-2 rounded-lg shadow mb-0">
+      <div className="form-group bg-success p-2 rounded-lg shadow mb-0">
         <input  className="form-control mb-2" id="title" placeholder="Title" name="title"
                 // this one will autofocus on when input form is called
                 // ref={input => input && input.focus()}
