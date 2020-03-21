@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
 import {ShareNoteContext} from "../utils/ShareNote";
+import {AuthContext} from "../firebase/Auth";
 import firebase from "firebase";
 
 function Card(props) {
   const {title, content, id} = props;
   const {setNote} = useContext(ShareNoteContext);
+  const {currentUser} = useContext(AuthContext);
 
   function editNote(e) {
     e.preventDefault();
@@ -13,7 +15,8 @@ function Card(props) {
 
   function deleteNote(e) {
     e.preventDefault();
-    firebase.firestore().collection("notes").doc(id).delete();
+    firebase.firestore().collection("notes")
+    .doc(currentUser.uid).collection("note").doc(id).delete();
   }
 
   return (
