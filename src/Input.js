@@ -1,13 +1,35 @@
-import React, {useContext} from "react";
+import React, {useContext, useRef, useEffect} from "react";
 import firebase from "./firebase/Firebase";
 import {ShareNoteContext} from "./utils/ShareNote";
 import {AuthContext} from "./firebase/Auth";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from '@material-ui/icons/Add';
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+
+const width = {xs:11, sm:8, md:6, lg:5, xl:5};
 
 function Input() {
+  const boxRef = useRef();
   const {currentUser} = useContext(AuthContext);
   const ref = firebase.firestore().collection("notes").doc(currentUser.uid).collection("note");
   const initialNote = {title:"", content:"", id:"", isOpen:false};
   const {note, setNote} = useContext(ShareNoteContext);
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, false);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, false);
+    };
+  }, []);
+
+  const handleClickOutside = event => {
+    if (boxRef.current && !boxRef.current.contains(event.target)) {
+      setNote(old=>{
+        return {...old, isOpen:false}
+      });
+    }
+  };
 
   function handleInput(event) {
     let {name, value} = event.target;
@@ -45,28 +67,40 @@ function Input() {
     setNote({...note, isOpen:true});
   }
 
+  function closeInput() {
+    const content = document.getElementById("content");
+    const isFocused = (document.activeElement === content);
+    if (!isFocused) setNote({...note, isOpen:false});
+  }
+
+  function closeContent() {
+    const title = document.getElementById("title");
+    const isFocused = (document.activeElement === title);
+    if (!isFocused) setNote({...note, isOpen:false});
+  }
+
   return (
-    <div className="container col-xl-5 col-lg-6 col-md-8 col-sm-10 col-11 mx-auto pt-1">
-      <div className="form-group bg-success p-2 rounded-lg shadow mb-0">
-        <input  className="form-control mb-2" id="title" placeholder="Title" name="title"
-                // this one will autofocus on when input form is called
-                // ref={input => input && input.focus()}
-                onChange={handleInput} value={note.title}
-                type={note.isOpen ? "text" : "hidden"}/>
-        <textarea className="form-control" id="content" rows={note.isOpen ? 3 : 1}
-                  placeholder="Content" onClick={onTextAreaClick}
-                  onChange={handleInput} name="content" value={note.content}>
-        </textarea>
-      </div>
+    <Grid item {...width}>
 
-      <div className="container text-right">
-        <button className="btn button-add btn-success rounded-circle d-inline shadow"
-                type="button" onClick={handleClick}>
-          +
-        </button>
-      </div>
+      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
+           my={2} p={1} bgcolor="red" borderRadius={2} ref={boxRef}>
+        <Box component="input" id="title" placeholder="Title" name="title" width={1}
+             onChange={handleInput} value={note.title}
+             type={note.isOpen ? "text" : "hidden"}/>
 
-    </div>
+        <Box component="textarea" id="content" name="content" placeholder="Content" width={1}
+             onClick={onTextAreaClick} value={note.content} rows={note.isOpen ? 3 : 1}
+             onChange={handleInput}  mt={note.isOpen ? 2 : 0}/>
+
+      </Box>
+
+      <Box display="flex" flexDirection="row" justifyContent="flex-end" mt={-4} pr={2}>
+        <Fab color="primary" aria-label="add" onClick={handleClick} size="small">
+          <AddIcon color="secondary"/>
+        </Fab>
+      </Box>
+
+    </Grid>
   );
 }
 
