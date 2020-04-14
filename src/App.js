@@ -4,6 +4,8 @@ import Footer from "./frame/Footer";
 import {Route, BrowserRouter} from "react-router-dom";
 import {AuthProvider} from "./firebase/Auth";
 import PrivateRoute from "./utils/PrivateRoute";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Home from "./Home";
 import SignIn from "./auth/SignIn";
 import Register from "./auth/Register";
@@ -11,8 +13,8 @@ import Login from "./auth/Login";
 
 function App() {
   return (
-    <div className="main">
-      <div className="container-fluid px-0">
+    <Box display="flex" flexDirection="column" justifyContent="space-between" minHeight="100vh">
+      <Grid>
         {/*app goes in here*/}
 
         <AuthProvider>
@@ -26,9 +28,9 @@ function App() {
         </AuthProvider>
 
         {/*app goes in here*/}
-      </div>
+      </Grid>
       <Footer/>
-    </div>
+    </Box>
   );
 }
 
