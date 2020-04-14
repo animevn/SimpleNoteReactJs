@@ -5,16 +5,15 @@ import firebase from "firebase";
 
 function Card(props) {
   const {title, content, id} = props;
-  const {setNote} = useContext(ShareNoteContext);
+  const {setNote, setEdit} = useContext(ShareNoteContext);
   const {currentUser} = useContext(AuthContext);
 
-  function editNote(e) {
-    e.preventDefault();
+  function editNote() {
+    setEdit(true);
     setNote({title:title, content:content, id:id, isOpen:true});
   }
 
-  function deleteNote(e) {
-    e.preventDefault();
+  function deleteNote() {
     firebase.firestore().collection("notes")
     .doc(currentUser.uid).collection("note").doc(id).delete();
   }
