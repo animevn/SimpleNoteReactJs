@@ -24,7 +24,9 @@ const Register = ()=>{
   };
 
   return (
+
     <Grid container direction="row" justify="center">
+
       <Box component="form" onSubmit={handleRegister}
            display="flex" flexDirection="column" justifyContent="center" alignItems="center"
            width={width} >
