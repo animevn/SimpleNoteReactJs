@@ -12,7 +12,7 @@ function Header() {
   return (
     <Box bgcolor="primary.main" py={{...padding}} boxShadow={3}>
       <Box fontWeight="fontWeightBold" mx={{...margin}}>
-        <Link color="inherit" href="#">
+        <Link color="inherit" href="/">
           <Typography variant="h3">Note Keeper</Typography>
         </Link>
       </Box>

@@ -17,7 +17,6 @@ const Register = ()=>{
   if (currentUser) return <Redirect to="/"/>;
 
   const handleRegister = (event)=>{
-    event.preventDefault();
     const {email, password} = event.target.elements;
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(err=>{
       alert(err);
@@ -26,8 +25,9 @@ const Register = ()=>{
 
   return (
     <Grid container direction="row" justify="center">
-      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
-           width={width}>
+      <Box component="form" onSubmit={handleRegister}
+           display="flex" flexDirection="column" justifyContent="center" alignItems="center"
+           width={width} >
 
         <Box mt={10} fontSize={100}
              display="flex" flexDirection="column" justifyContent="center" alignItems="center">
@@ -49,8 +49,8 @@ const Register = ()=>{
             Email
           </Box>
 
-          <Box component="input" border={0} height={30} fontSize={20} width={0.65} height={1}
-               borderLeft={1} id="email" borderColor="green"/>
+          <Box component="input" border={0} fontSize={20} width={0.65} height={1}
+               borderLeft={1} id="email" borderColor="green" name="email" required/>
         </Box>
 
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center"
@@ -60,8 +60,8 @@ const Register = ()=>{
             Password
           </Box>
 
-          <Box component="input" border={0} height={30} fontSize={20} width={0.65} height={1}
-               borderLeft={1} id="password" borderColor="green"/>
+          <Box component="input" border={0} fontSize={20} width={0.65} height={1}
+               borderLeft={1} id="password" borderColor="green" name="password" required/>
         </Box>
 
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center"
@@ -77,41 +77,12 @@ const Register = ()=>{
 
         <Box display="flex" flexDirection="row" justifyContent="center" alignItems="stretch"
              border={1} borderRadius={5} overflow="hidden" height={45} bgcolor="primary.main"
-             width={0.6} mt={1} boxShadow={3} borderColor="green">
-          <Button variant="text" size="large" fullWidth>
+             width={0.6} mt={1} boxShadow={3} borderColor="green" >
+          <Button variant="text" size="large" fullWidth type="submit">
             <Box color="green">Register</Box>
           </Button>
 
         </Box>
-
-
-
-
-
-
-
-
-
-
-        <Box my={10}>
-          <form className="form-signin" onSubmit={handleRegister}>
-            <label htmlFor="inputEmail" className="sr-only">Email address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address"
-                   name="email" required autoFocus />
-            <label htmlFor="inputPassword" className="sr-only">Password</label>
-            <input type="password" id="inputPassword" className="form-control"
-                   placeholder="Password"
-                   name="password" required />
-            <div className="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Remember me
-              </label>
-            </div>
-            <button className="btn btn-lg btn-success btn-block" type="submit">Register</button>
-          </form>
-        </Box>
-
-
 
       </Box>
     </Grid>
