@@ -72,9 +72,6 @@ const Login = ()=>{
         </Box>
 
       </Box>
-
-
-
     </Grid>
   );
 };
