@@ -1,7 +1,15 @@
 import React, {useContext} from "react";
 import {ShareNoteContext} from "../utils/ShareNote";
 import {AuthContext} from "../firebase/Auth";
-import firebase from "firebase";
+import firebase from "../firebase/Firebase";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
+import ClearIcon from "@material-ui/icons/Clear";
+import IconButton from "@material-ui/core/IconButton";
+const cardWidth = {xs:6, sm:6, md:4, lg:3, xl:2};
 
 function Card(props) {
   const {title, content, id} = props;
@@ -19,54 +27,44 @@ function Card(props) {
   }
 
   return (
-    <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 p-2">
-      <div className="card shadow-sm flex-column h-100">
-        <div className="card-header bg-success text-white">{title}</div>
-        <div className="card-body d-flex flex-column justify-content-between pb-0 pr-0">
-          <p className="mr-2">{content}</p>
+    <Grid item {...cardWidth}>
+      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
+           borderRadius={5} m={2} overflow="hidden" boxShadow={2}>
 
-         <div className="pr-0">
-           <div className="mr-auto">
+        <Box bgcolor="lightgray" width={1} p={1}
+             display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Typography component="div" variant="h6">
+            <Box p={0}>
+              {title}
+            </Box>
+          </Typography>
 
-             <button className="btn float-right text-danger" data-toggle="modal"
-                     data-target={"#i" + id}>
-               Delete
-             </button>
+          <IconButton size="small" onClick={deleteNote}>
+            <ClearIcon />
+          </IconButton>
 
-             <div className="modal fade" id={"i" + id}>
-               <div className="modal-dialog modal-dialog-centered">
-                 <div className="modal-content">
-                   <div className="modal-header">
-                     <h5 className="modal-title">Hello</h5>
-                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                     </button>
-                   </div>
-                   <div className="modal-body">
-                     <p>Delete this note?</p>
-                   </div>
-                   <div className="modal-footer">
-                     <button type="button" className="btn btn-primary" data-dismiss="modal">
-                       Cancel
-                     </button>
-                     <button type="button" className="btn btn-primary" data-dismiss="modal"
-                             onClick={deleteNote}>
-                       OK
-                     </button>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
+        </Box>
 
-           <button className="btn float-right text-success" onClick={editNote}>
-             Edit
-           </button>
-         </div>
+        <Box width={1} p={1}>
+          <Typography component="div" variant="h6">
+            <Box p={0}>
+              {content}
+            </Box>
+          </Typography>
+        </Box>
 
-        </div>
-      </div>
-    </div>
+        <Box width={1}>
+          <Divider/>
+        </Box>
+
+        <Box my={1}>
+          <Button variant="outlined" color="secondary" onClick={editNote}>
+            Edit
+          </Button>
+        </Box>
+
+      </Box>
+    </Grid>
   );
 }
 
