@@ -1,32 +1,20 @@
 import React, {useContext} from "react";
 import Card from "./frame/Card";
 import {FirestoreContext} from "./firebase/Firestore";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 
 function Note() {
   const {notes, loading} = useContext(FirestoreContext);
   if (notes.length === 0){
     if (loading === null){
       return (
-        <div className="container d-flex justify-content-center">
-          <div className="spinner-grow text-primary" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <div className="spinner-grow text-secondary" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <div className="spinner-grow text-success" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <div className="spinner-grow text-danger" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <div className="spinner-grow text-warning" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <div className="spinner-grow text-info" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <CircularProgress/>
+          <CircularProgress color="secondary"/>
+          <CircularProgress color="primary"/>
+        </Grid>
       )
     }else {
       return (
@@ -35,11 +23,13 @@ function Note() {
     }
   }else {
     return (
-      <div className="row mx-auto">
-        {notes.map((note, index)=>{
-          return <Card key={index} id={note.id} title={note.title} content={note.content} />
-        })}
-      </div>
+      <Grid container direction="row" justify="center" >
+        <Box width={1}>
+          {notes.map((note, index)=>{
+            return <Card key={index} id={note.id} title={note.title} content={note.content} />
+          })}
+        </Box>
+      </Grid>
     )
   }
 }
