@@ -7,7 +7,7 @@ function Footer() {
 
   const Copyright = ()=>{
     return (
-      <Box align="center">
+      <Box align="center" mt={3}>
         <Box>
          <Typography variant="body1">
            Copyright ©

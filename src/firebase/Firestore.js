@@ -10,12 +10,14 @@ export const FirestoreProvider = ({children}) =>{
   useEffect(()=>{
 
     firebase.auth().onAuthStateChanged(user=>{
-      const db = firebase.firestore().collection("notes").doc(user.uid).collection("note");
-      db.onSnapshot(snapshot => {
-        setLoading(snapshot.size);
-        setNotes([]);
-        snapshot.forEach(doc=> setNotes(old=>[{...doc.data(), id: doc.id}, ...old]));
-      });
+      if (user){
+        const db = firebase.firestore().collection("notes").doc(user.uid).collection("note");
+        db.onSnapshot(snapshot => {
+          setLoading(snapshot.size);
+          setNotes([]);
+          snapshot.forEach(doc=> setNotes(old=>[{...doc.data(), id: doc.id}, ...old]));
+        });
+      }
     });
 
   }, []);

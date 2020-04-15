@@ -3,7 +3,6 @@ import Card from "./frame/Card";
 import {FirestoreContext} from "./firebase/Firestore";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 
 function Note() {
   const {notes, loading} = useContext(FirestoreContext);
@@ -23,12 +22,10 @@ function Note() {
     }
   }else {
     return (
-      <Grid container direction="row" justify="center" >
-        <Box width={1}>
-          {notes.map((note, index)=>{
-            return <Card key={index} id={note.id} title={note.title} content={note.content} />
-          })}
-        </Box>
+      <Grid container direction="row" justify="center" alignContent="flex-start" >
+        {notes.map((note, index)=>{
+          return <Card key={index} id={note.id} title={note.title} content={note.content} />
+        })}
       </Grid>
     )
   }

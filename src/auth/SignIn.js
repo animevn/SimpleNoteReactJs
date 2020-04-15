@@ -11,6 +11,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const width = {xs:"90%", sm:"550px", md:"550px", lg:"550px", xl:"550px"};
+const boxWidth = {xs:"85%", sm:0.6, md:0.6, lg:0.6, xl:0.6};
 
 const SignIn = ()=>{
   const {currentUser}= useContext(AuthContext);
@@ -48,7 +49,8 @@ const SignIn = ()=>{
 
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center"
              border={1} borderRadius={5} pl={1} overflow="hidden" height={45} boxShadow={3}
-             width={0.6} mt={5} bgcolor="primary.main" borderColor="green">
+             width={boxWidth} mt={5} bgcolor="primary.main" borderColor="green">
+
           <Box width={0.35} color="green">
             Email
           </Box>
@@ -59,7 +61,7 @@ const SignIn = ()=>{
 
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center"
              border={1} borderRadius={5} pl={1} overflow="hidden" height={45} boxShadow={3}
-             width={0.6} mt={2} bgcolor="primary.main" borderColor="green">
+             width={boxWidth} mt={2} bgcolor="primary.main" borderColor="green">
           <Box width={0.35} color="green">
             Password
           </Box>
@@ -69,7 +71,7 @@ const SignIn = ()=>{
         </Box>
 
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center"
-             width={0.6} mt={1}>
+             width={boxWidth} mt={1}>
           <FormControlLabel control={
             <Checkbox color="secondary"/>
           } label={
@@ -81,11 +83,10 @@ const SignIn = ()=>{
 
         <Box display="flex" flexDirection="row" justifyContent="center" alignItems="stretch"
              border={1} borderRadius={5} overflow="hidden" height={45} bgcolor="primary.main"
-             width={0.6} mt={1} boxShadow={3} borderColor="green" >
+             width={boxWidth} mt={1} boxShadow={3} borderColor="green" >
           <Button variant="text" size="large" fullWidth type="submit">
             <Box color="green">Sign in</Box>
           </Button>
-
         </Box>
 
       </Box>

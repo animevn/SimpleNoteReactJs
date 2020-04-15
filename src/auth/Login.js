@@ -8,6 +8,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 const width = {xs:"90%", sm:"550px", md:"550px", lg:"550px", xl:"550px"};
+const boxWidth = {xs:"90%", sm:"50%", md:"50%", lg:"50%", xl:"50%"};
 
 const Login = ()=>{
   const {currentUser} = useContext(AuthContext);
@@ -47,7 +48,8 @@ const Login = ()=>{
           </Typography>
         </Box>
 
-        <Box display="flex" flexDirection="row" justifyContent="space-between" mt={5} width={0.5}>
+        <Box display="flex" flexDirection="row" justifyContent="space-between"
+             mt={5} width={boxWidth}>
           <Box width={.45}>
             <Button fullWidth variant="outlined" color="secondary" size="large"
                     onClick={onRegisterClick}>
@@ -64,7 +66,7 @@ const Login = ()=>{
 
         </Box>
 
-        <Box width={0.5} mt={3}>
+        <Box width={boxWidth} mt={3}>
           <Button fullWidth variant="outlined" color="secondary" size="large"
                   onClick={onGoogleClick}>
             Google Login

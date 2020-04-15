@@ -63,31 +63,33 @@ function Input() {
   }
 
   return (
-    <Grid item {...width}>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <Box>
-          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
-               my={2} p={1} bgcolor="primary.main" borderRadius={3} boxShadow={3}>
+    <Grid container direction="row" justify="center">
+      <Grid item {...width}>
+        <ClickAwayListener onClickAway={handleClickAway}>
+          <Box>
+            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center"
+                 my={2} p={1} bgcolor="primary.main" borderRadius={3} boxShadow={3}>
 
-            <Box component="input" id="title" placeholder="Title" name="title" width={1}
-                 onChange={handleInput} value={note.title} fontSize={16} p={0.5}
-                 type={note.isOpen ? "text" : "hidden"} borderRadius={2} borderColor="transparent"
-            />
+              <Box component="input" id="title" placeholder="Title" name="title" width={1}
+                   onChange={handleInput} value={note.title} fontSize={16} p={0.5}
+                   type={note.isOpen ? "text" : "hidden"} borderRadius={2} borderColor="transparent"
+              />
 
-            <Box component="textarea" id="content" name="content" placeholder="Content" width={1}
-                 onClick={onTextAreaClick} value={note.content} rows={note.isOpen ? 3 : 1}
-                 onChange={handleInput}  mt={note.isOpen ? 2 : 0} fontSize={16} p={0.5}
-                 borderRadius={2} borderColor="transparent"/>
+              <Box component="textarea" id="content" name="content" placeholder="Content" width={1}
+                   onClick={onTextAreaClick} value={note.content} rows={note.isOpen ? 3 : 1}
+                   onChange={handleInput}  mt={note.isOpen ? 2 : 0} fontSize={16} p={0.5}
+                   borderRadius={2} borderColor="transparent"/>
 
+            </Box>
+
+            <Box display="flex" flexDirection="row" justifyContent="flex-end" mt={-4} pr={2}>
+              <Fab color="primary" aria-label="add" onClick={handleClick} size="small">
+                <AddIcon color="secondary"/>
+              </Fab>
+            </Box>
           </Box>
-
-          <Box display="flex" flexDirection="row" justifyContent="flex-end" mt={-4} pr={2}>
-            <Fab color="primary" aria-label="add" onClick={handleClick} size="small">
-              <AddIcon color="secondary"/>
-            </Fab>
-          </Box>
-        </Box>
-      </ClickAwayListener>
+        </ClickAwayListener>
+      </Grid>
     </Grid>
   );
 }
